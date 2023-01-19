@@ -3,7 +3,6 @@ import styles from './Header.module.css';
 
 function Header() {
    return (
-      <div className={styles}>
          <nav>
             <div className='nav-wrapper'>
                <a
@@ -14,7 +13,6 @@ function Header() {
                </a>
             </div>
          </nav>
-      </div>
    );
 }
 

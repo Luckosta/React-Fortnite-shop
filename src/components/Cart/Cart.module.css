@@ -1,0 +1,21 @@
+.cart{
+	position: fixed;
+	top: 5rem;
+	right: 2rem;
+	border-radius: 1.5rem;
+	cursor: pointer;
+	z-index:10;
+	padding: 1rem;
+}
+
+.quantity{
+
+}
+
+
+@media  (max-width: 770px){
+	.cart{
+		top: unset;
+		bottom: 2rem;
+	}
+}

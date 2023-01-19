@@ -1,22 +1,32 @@
-import React from 'react'
+import classNames from 'classnames';
+import React from 'react';
+import styles from './Good.module.css';
 
 function Good(props) {
+   const { id, name, price, description, full_background, addToBasket =Function.prototype } = props;
 
-  return (
-	<div className="card">
-    <div className="card-image waves-effect waves-block waves-light">
-      <img className="activator" src={props.image}/>
-    </div>
-    <div className="card-content">
-      <span className="card-title activator grey-text text-darken-4">Card Title<i className="material-icons right">more_vert</i></span>
-      <p><a href="#">This is a link</a></p>
-    </div>
-    <div className="card-reveal">
-      <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-    </div>
-  </div>
-  )
+   return (
+      <div className={classNames(styles.card, 'card')}>
+         <div className='card-image waves-effect waves-block waves-light'>
+            <img alt={name} className='activator' src={full_background} />
+         </div>
+         <div className='card-content'>
+            <span className='card-title activator grey-text text-darken-4'>
+               {name}
+            </span>
+            <p>{description}</p>
+         </div>
+         <div className={classNames(styles.cardBottom, 'card-action')}>
+            <button
+               onClick={() => addToBasket({id, name, price})}
+               className='btn bottom'
+            >
+               Buy
+            </button>
+            <span className={classNames(styles.price, 'right')}>{price} VB</span>
+         </div>
+      </div>
+   );
 }
 
-export default Good
+export default Good;

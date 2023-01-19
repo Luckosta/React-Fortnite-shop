@@ -1,0 +1,12 @@
+.price{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.card{
+	display: grid;
+}
+
+.cardBottom{
+	align-self: flex-end;
+}
