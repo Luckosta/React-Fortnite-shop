@@ -10,7 +10,7 @@ function Header() {
                   href='#'
                   className={classNames(styles.logo, 'brand-logo center')}
                >
-                  React Movies
+                  React Fortnite Shop
                </a>
             </div>
          </nav>
