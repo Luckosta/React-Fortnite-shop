@@ -19,11 +19,11 @@ function Good(props) {
          <div className={classNames(styles.cardBottom, 'card-action')}>
             <button
                onClick={() => addToBasket({id, name, price})}
-               className='btn bottom'
+               className={classNames(styles.btn,'btn')}
             >
                Buy
             </button>
-            <span className={classNames(styles.price, 'right')}>{price} VB</span>
+            <span className={classNames(styles.price, 'right white-text')}>{price} VB</span>
          </div>
       </div>
    );

@@ -5,11 +5,18 @@ import { API_KEY, API_URL } from '../../config';
 import GoodsList from '../../components/GoodsList/GoodsList';
 import Preloader from '../../components/Preloader/Preloader';
 import Cart from '../../components/Cart/Cart';
+import BasketList from '../../components/BasketList/BasketList';
 
 function Main() {
    const [goods, setGoods] = useState([]);
    const [loading, setLoading] = useState(true);
    const [order, setOrder] = useState([]);
+   const [isBasketShow, setIsBaskeShow] = useState(false);
+
+   const removeFromBasket = (itemId) => {
+      const newOrder = order.filter((item) => item.id !== itemId);
+      setOrder(newOrder);
+   };
 
    const addToBasket = (item) => {
       const itemIndex = order.findIndex((element) => element.id === item.id);
@@ -34,6 +41,10 @@ function Main() {
       }
    };
 
+   const handleBasketShow = () => {
+      setIsBaskeShow(!isBasketShow);
+   };
+
    const fetchGoods = async () => {
       const response = await fetch(API_URL, {
          headers: {
@@ -52,11 +63,18 @@ function Main() {
 
    return (
       <main className={cn(styles.content, 'container content')}>
-         <Cart quantity={order.length} />
+         <Cart handleBasketShow={handleBasketShow} quantity={order.length} />
          {loading ? (
             <Preloader />
          ) : (
             <GoodsList goods={goods} addToBasket={addToBasket} />
+         )}
+         {isBasketShow && (
+            <BasketList
+               removeFromBasket={removeFromBasket}
+               handleBasketShow={handleBasketShow}
+               order={order}
+            />
          )}
       </main>
    );

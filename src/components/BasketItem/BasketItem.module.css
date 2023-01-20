@@ -1,0 +1,11 @@
+.icon {
+   color: #d50000;
+   cursor: pointer;
+	grid-column: iconStart / iconEnd;
+}
+
+.container {
+   display: grid;
+	grid-template-columns: repeat(3, auto) 1fr[iconStart] auto[iconEnd];
+   gap: 20px;
+}

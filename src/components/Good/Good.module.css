@@ -9,4 +9,15 @@
 
 .cardBottom{
 	align-self: flex-end;
+	background: #ff8a80 !important;
+}
+
+.btn{
+	color: #000000;
+	background-color: #76ff03;
+	transition: all .2s;
+}
+.btn:hover{
+	background-color: #ccff90;
+	transition: all .2s;
 }
