@@ -13,6 +13,35 @@ function Main() {
    const [order, setOrder] = useState([]);
    const [isBasketShow, setIsBaskeShow] = useState(false);
 
+   const pluseQuantity = (itemId) => {
+      setOrder(
+         order.map((item) => {
+            if (item.id === itemId) {
+               const newQuantity = item.quantity + 1;
+               return {
+                  ...item,
+                  quantity: newQuantity,
+               };
+            } else return item;
+         })
+      );
+   };
+   const minusQuantity = (itemId) => {
+      setOrder(
+         order.map((item) => {
+            if (item.id === itemId) {
+               if (item.quantity > 0) {
+                  const newQuantity = item.quantity - 1;
+                  return {
+                     ...item,
+                     quantity: newQuantity,
+                  };
+               } else return item;
+            } else return item;
+         })
+      );
+   };
+
    const removeFromBasket = (itemId) => {
       const newOrder = order.filter((item) => item.id !== itemId);
       setOrder(newOrder);
@@ -71,6 +100,8 @@ function Main() {
          )}
          {isBasketShow && (
             <BasketList
+               minusQuantity={minusQuantity}
+               pluseQuantity={pluseQuantity}
                removeFromBasket={removeFromBasket}
                handleBasketShow={handleBasketShow}
                order={order}

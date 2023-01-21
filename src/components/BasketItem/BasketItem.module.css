@@ -1,11 +1,47 @@
 .icon {
    color: #d50000;
    cursor: pointer;
-	grid-column: iconStart / iconEnd;
+   grid-column: iconStart / iconEnd;
 }
 
 .container {
    display: grid;
-	grid-template-columns: repeat(3, auto) 1fr[iconStart] auto[iconEnd];
+   grid-template-columns: repeat(3, auto) 1fr[iconStart] auto[iconEnd];
    gap: 20px;
+	align-items: center;
+}
+
+.section {
+   display: grid;
+   grid-template-columns: repeat(3, auto);
+   gap: 20px;
+	align-items: center;
+	
+}
+
+.btn {
+	border-radius: 10px;
+
+	font-size: 20px;
+   transition: all 0.2s;
+}
+
+.plus {
+   background-color: #76ff03;
+   color: #000000;
+}
+
+.plus:hover {
+   background-color: #ccff90;
+   transition: all 0.2s;
+}
+
+.minus {
+   background-color: #d50000;
+	color: #ffff;
+}
+
+.minus:hover {
+   background-color: #ff8a80;
+   transition: all 0.2s;
 }
