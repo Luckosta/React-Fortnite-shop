@@ -1,17 +1,14 @@
 import classNames from 'classnames';
+import { useContext } from 'react';
+import { MainContext } from '../../context';
 
 import styles from './BasketItem.module.css';
 
 function BasketItem(props) {
-   const {
-      id,
-      name,
-      quantity,
-      price,
-      removeFromBasket = Function.prototype,
-      plusQuantity = Function.prototype,
-      minusQuantity = Function.prototype,
-   } = props;
+   const { id, name, quantity, price } = props;
+
+   const { removeFromBasket, plusQuantity, minusQuantity } =
+      useContext(MainContext);
 
    return (
       <li className={classNames(styles.container, 'collection-item')}>

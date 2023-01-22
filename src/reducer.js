@@ -1,5 +1,7 @@
 function reducer(state, { type, payload }) {
    switch (type) {
+      case 'SET_GOODS':
+         return { ...state, goods: payload ||[], loading: false };
       case 'CLOSE_ALERT':
          return {
             ...state,

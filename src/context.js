@@ -3,7 +3,7 @@ import { createContext } from 'react';
 import reducer from './reducer';
 import { API_URL, API_KEY } from './config';
 
-export const ShopContext = createContext();
+export const MainContext = createContext();
 
 const initialState = {
    goods: [],
@@ -14,7 +14,7 @@ const initialState = {
    response: {},
 };
 
-const ContextProvider = ({ children }) => {
+export const ContextProvider = ({ children }) => {
    const [values, dispatch] = useReducer(reducer, initialState);
 
    values.closeAlert = () => {
@@ -40,10 +40,14 @@ const ContextProvider = ({ children }) => {
    values.addToBasket = (item) => {
       dispatch({ type: 'ADD_TO_BASKET', payload: item });
    };
+ 
+	values.setGoods = (data) => {
+      dispatch({ type: 'SET_GOODS', payload: data });
+   };
 
    return (
-      <ShopContext.Provider value={values}>{children}</ShopContext.Provider>
+      <MainContext.Provider value={values}>{children}</MainContext.Provider>
    );
 };
 
-export default ContextProvider;
+

@@ -1,20 +1,17 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { useContext } from 'react';
+import { MainContext } from '../../context';
 import styles from './Cart.module.css';
-function Cart(props) {
-   const {
-      quantity = 0,
-      handleBasketShow = Function.prototype,
-      removeFromBasket = Function.prototype,
-   } = props;
+function Cart() {
+   const { handleBasketShow, order } = useContext(MainContext);
+
+   const quantity = order.length;
    return (
       <div
          onClick={handleBasketShow}
          className={classNames(styles.cart, 'red accent-2 white-text')}
       >
-         <i className='material-icons'>
-            add_shopping_cart
-         </i>
+         <i className='material-icons'>add_shopping_cart</i>
          {quantity ? <span className={styles.quantity}>{quantity}</span> : null}
       </div>
    );

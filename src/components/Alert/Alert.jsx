@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
+import { useContext } from 'react';
+import { MainContext } from '../../context';
 import styles from './Alert.module.css';
 
-
-
-function Alert(props) {
+function Alert() {
    const {
-      name = '',
+      alertName = '',
       closeAlert = Function.prototype,
       handleBasketShow = Function.prototype,
-   } = props;
+   } = useContext(MainContext);
 
    useEffect(() => {
       const timerId = setTimeout(closeAlert, 3000);
@@ -17,7 +17,7 @@ function Alert(props) {
          clearTimeout(timerId);
       };
       //eslint-disable-next-line
-   }, [name]);
+   }, [alertName]);
 
    return (
       <div className={styles.alert} id='toast-container'>
@@ -26,7 +26,7 @@ function Alert(props) {
             className='toast'
             style={{ cursor: 'pointer' }}
          >
-            {name} added to cart
+            {alertName} added to cart
          </div>
       </div>
    );

@@ -1,15 +1,14 @@
 import classNames from 'classnames';
+import { useContext } from 'react';
+import { MainContext } from '../../context';
 import BasketItem from '../BasketItem/BasketItem';
 import styles from './BasketList.module.css';
 
-function BasketList(props) {
+function BasketList() {
    const {
       order = [],
-      handleBasketShow = Function.prototype,
-      removeFromBasket = Function.prototype,
-      plusQuantity = Function.prototype,
-      minusQuantity = Function.prototype,
-   } = props;
+      handleBasketShow,
+   } = useContext(MainContext);
 
    const totalPrice = order.reduce(
       (sum, el) => sum + el.price * el.quantity,
@@ -30,9 +29,6 @@ function BasketList(props) {
             order.map((item) => (
                <BasketItem
                   key={item.id}
-                  pluseQuantity={plusQuantity}
-                  minusQuantity={minusQuantity}
-                  removeFromBasket={removeFromBasket}
                   {...item}
                />
             ))
@@ -41,7 +37,12 @@ function BasketList(props) {
                <b>Basket is empty</b>
             </li>
          )}
-         <li className={classNames(styles.footer,'collection-item red accent-1 white-text')}>
+         <li
+            className={classNames(
+               styles.footer,
+               'collection-item red accent-1 white-text'
+            )}
+         >
             Total price: {totalPrice}
             <button className={classNames(styles.btn, 'secondary-content btn')}>
                Place an order
