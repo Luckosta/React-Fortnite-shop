@@ -6,8 +6,9 @@ function Header() {
          <nav>
             <div className='nav-wrapper'>
                <a
-                  href='#'
+                  href='https://github.com/Luckosta/React-Fortnite-shop'
                   className={classNames(styles.logo, 'brand-logo center')}
+						target='_blank' rel="noreferrer"
                >
                   React Fortnite Shop
                </a>
