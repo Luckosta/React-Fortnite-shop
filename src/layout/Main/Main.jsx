@@ -6,12 +6,14 @@ import GoodsList from '../../components/GoodsList/GoodsList';
 import Preloader from '../../components/Preloader/Preloader';
 import Cart from '../../components/Cart/Cart';
 import BasketList from '../../components/BasketList/BasketList';
+import Alert from '../../components/Alert/Alert';
 
 function Main() {
    const [goods, setGoods] = useState([]);
    const [loading, setLoading] = useState(true);
    const [order, setOrder] = useState([]);
    const [isBasketShow, setIsBaskeShow] = useState(false);
+   const [alertName, setAlertName] = useState('');
 
    const pluseQuantity = (itemId) => {
       setOrder(
@@ -68,6 +70,8 @@ function Main() {
          });
          setOrder(newOrder);
       }
+
+		setAlertName(item.name);
    };
 
    const handleBasketShow = () => {
@@ -90,6 +94,10 @@ function Main() {
       fetchGoods();
    }, []);
 
+   const closeAlert = () => {
+      setAlertName('');
+   };
+
    return (
       <main className={cn(styles.content, 'container content')}>
          <Cart handleBasketShow={handleBasketShow} quantity={order.length} />
@@ -107,6 +115,8 @@ function Main() {
                order={order}
             />
          )}
+
+         {alertName && <Alert name={alertName} closeAlert={closeAlert} handleBasketShow={handleBasketShow}/>}
       </main>
    );
 }

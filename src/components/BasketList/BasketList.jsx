@@ -18,7 +18,7 @@ function BasketList(props) {
    return (
       <ul className={classNames(styles.basketList, 'collection')}>
          <li className='collection-item red accent-1 white-text'>
-            BasketList{' '}
+            BasketList
             <i
                onClick={handleBasketShow}
                className={classNames(styles.icon, 'material-icons right')}
@@ -31,7 +31,7 @@ function BasketList(props) {
                <BasketItem
                   key={item.id}
                   pluseQuantity={pluseQuantity}
-						minusQuantity={minusQuantity}
+                  minusQuantity={minusQuantity}
                   removeFromBasket={removeFromBasket}
                   {...item}
                />
@@ -41,8 +41,11 @@ function BasketList(props) {
                <b>Basket is empty</b>
             </li>
          )}
-         <li className='collection-item red accent-1 white-text'>
+         <li className={classNames(styles.footer,'collection-item red accent-1 white-text')}>
             Total price: {totalPrice}
+            <button className={classNames(styles.btn, 'secondary-content btn')}>
+               Place an order
+            </button>
          </li>
       </ul>
    );
