@@ -1,6 +1,6 @@
 {
    "name": "react-shop",
-   "home": "https://Luckosta.github.io/React-Fortnite-shop",
+   "homepage": "https://Luckosta.github.io/React-Fortnite-shop",
    "version": "0.1.0",
    "private": true,
    "dependencies": {
