@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useReducer } from 'react';
+
 import styles from './BasketItem.module.css';
 
 function BasketItem(props) {
@@ -9,7 +9,7 @@ function BasketItem(props) {
       quantity,
       price,
       removeFromBasket = Function.prototype,
-      pluseQuantity = Function.prototype,
+      plusQuantity = Function.prototype,
       minusQuantity = Function.prototype,
    } = props;
 
@@ -19,10 +19,16 @@ function BasketItem(props) {
          <span>Quantity: {quantity}</span>
          <span className={styles.section}>
             <span>Price: {price * quantity}</span>
-            <button onClick={()=>pluseQuantity(id)} className={classNames(styles.plus, styles.btn, 'btn')}>
+            <button
+               onClick={() => plusQuantity(id)}
+               className={classNames(styles.plus, styles.btn, 'btn')}
+            >
                +
             </button>
-            <button onClick={()=>minusQuantity(id)} className={classNames(styles.minus, styles.btn, 'btn')}>
+            <button
+               onClick={() => minusQuantity(id)}
+               className={classNames(styles.minus, styles.btn, 'btn')}
+            >
                -
             </button>
          </span>

@@ -7,7 +7,7 @@ function BasketList(props) {
       order = [],
       handleBasketShow = Function.prototype,
       removeFromBasket = Function.prototype,
-      pluseQuantity = Function.prototype,
+      plusQuantity = Function.prototype,
       minusQuantity = Function.prototype,
    } = props;
 
@@ -30,7 +30,7 @@ function BasketList(props) {
             order.map((item) => (
                <BasketItem
                   key={item.id}
-                  pluseQuantity={pluseQuantity}
+                  pluseQuantity={plusQuantity}
                   minusQuantity={minusQuantity}
                   removeFromBasket={removeFromBasket}
                   {...item}

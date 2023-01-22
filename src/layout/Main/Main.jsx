@@ -15,7 +15,7 @@ function Main() {
    const [isBasketShow, setIsBaskeShow] = useState(false);
    const [alertName, setAlertName] = useState('');
 
-   const pluseQuantity = (itemId) => {
+   const plusQuantity = (itemId) => {
       setOrder(
          order.map((item) => {
             if (item.id === itemId) {
@@ -71,7 +71,7 @@ function Main() {
          setOrder(newOrder);
       }
 
-		setAlertName(item.name);
+      setAlertName(item.name);
    };
 
    const handleBasketShow = () => {
@@ -90,13 +90,13 @@ function Main() {
       setLoading(false);
    };
 
-   useEffect(() => {
-      fetchGoods();
-   }, []);
-
    const closeAlert = () => {
       setAlertName('');
    };
+
+   useEffect(() => {
+      fetchGoods();
+   }, []);
 
    return (
       <main className={cn(styles.content, 'container content')}>
@@ -109,14 +109,20 @@ function Main() {
          {isBasketShow && (
             <BasketList
                minusQuantity={minusQuantity}
-               pluseQuantity={pluseQuantity}
+               plusQuantity={plusQuantity}
                removeFromBasket={removeFromBasket}
                handleBasketShow={handleBasketShow}
                order={order}
             />
          )}
 
-         {alertName && <Alert name={alertName} closeAlert={closeAlert} handleBasketShow={handleBasketShow}/>}
+         {alertName && (
+            <Alert
+               name={alertName}
+               closeAlert={closeAlert}
+               handleBasketShow={handleBasketShow}
+            />
+         )}
       </main>
    );
 }
